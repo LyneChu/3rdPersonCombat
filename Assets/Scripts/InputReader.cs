@@ -4,34 +4,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour, Controls.IPlayerActions
-{
-    public event Action JumpEvent;
-    public event Action DodgeEvent;
+public class InputReader : MonoBehaviour, Controls.IPlayerActions {
+	public Vector2 MovementValue { get; private set; }
 
-    private Controls controls;
+	public event Action JumpEvent;
+	public event Action DodgeEvent;
 
-    private void Start() {
-        controls = new Controls();
-        controls.Player.SetCallbacks(this);
-        controls.Player.Enable();
-    }
-     
-    private void OnDestory() {
-        controls.Player.Disable();
-    }
+	private Controls controls;
 
-    public void OnJump(InputAction.CallbackContext context) {
-        if (!context.performed)
-            return;
+	private void Start() {
+		controls = new Controls();
+		controls.Player.SetCallbacks(this);
+		controls.Player.Enable();
+	}
+	 
+	private void OnDestory() {
+		controls.Player.Disable();
+	}
 
-        JumpEvent?.Invoke();
-    }
+	public void OnJump(InputAction.CallbackContext context) {
+		if (!context.performed)
+			return;
 
-    public void OnDodge(InputAction.CallbackContext context) {
-        if (!context.performed)
-            return;
+		JumpEvent?.Invoke();
+	}
 
-        DodgeEvent?.Invoke();
-    }
+	public void OnDodge(InputAction.CallbackContext context) {
+		if (!context.performed)
+			return;
+
+		DodgeEvent?.Invoke();
+	}
+
+	public void OnMove(InputAction.CallbackContext context) {
+		MovementValue = context.ReadValue<Vector2>();
+	}
 }
