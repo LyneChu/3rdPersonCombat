@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class StateMachine : MonoBehaviour
 {
     private State currentState;
-    
+
     public void SwitchState(State newState)
     {
         currentState?.Exit();
@@ -15,7 +15,8 @@ public abstract class StateMachine : MonoBehaviour
 
     private void Update() {
 
-        currentState?.Tick(Time.deltaTime); 
+        currentState?.Tick(Time.deltaTime);
+
         // ? : Null Conditional Operator 
         // Warning : it wont't work with MonoBehaviour / ScriptableObject
     }
