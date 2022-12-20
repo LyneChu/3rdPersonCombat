@@ -11,10 +11,7 @@ public class PlayerTestState : PlayerBaseState
     }
 
     public override void Tick(float deltaTime) {
-        Vector3 movement = new();
-        movement.x = stateMachine.InputReader.MovementValue.x;
-        movement.y = 0;
-        movement.z = stateMachine.InputReader.MovementValue.y;
+        Vector3 movement = CalculateMovement();
 
         stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
 
@@ -25,12 +22,25 @@ public class PlayerTestState : PlayerBaseState
 
         stateMachine.animator.SetFloat("FreeLookSpeed", 1, 0.1f, deltaTime);
         stateMachine.transform.rotation = Quaternion.LookRotation(movement);
-
     }
 
     public override void Exit() {
         
     }
 
+    private Vector3 CalculateMovement()
+    {
+        Vector3 forward = stateMachine.MainCameraTransform.forward;
+        Vector3 right = stateMachine.MainCameraTransform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        return forward * stateMachine.InputReader.MovementValue.y +
+            right * stateMachine.InputReader.MovementValue.x;
+    }
 
 }
