@@ -31,7 +31,6 @@ public class Targeter : MonoBehaviour
         CurrentTarget = targets[0];
         cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
 
-
         return true;
     }
 
