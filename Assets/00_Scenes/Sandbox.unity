@@ -582,43 +582,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1126288644, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.8000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9691726
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.08085985
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.2319304
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126288645, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.019350378
-      objectReference: {fileID: 0}
-    - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.033495553
-      objectReference: {fileID: 0}
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00002853403
+      value: -0.000028534028
       objectReference: {fileID: 0}
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
@@ -685,11 +652,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7255536819519936041, guid: dbed46575ae794fc79b5bce407b98a68,
+    - target: {fileID: 3939358496637681062, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
-      propertyPath: m_Targets.Array.data[1].target
-      value: 
-      objectReference: {fileID: 1217012530}
+      propertyPath: m_ChildCameras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: dbed46575ae794fc79b5bce407b98a68, type: 3}
