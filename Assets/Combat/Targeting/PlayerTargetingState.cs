@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerTargetingState : PlayerBaseState
-{
+public class PlayerTargetingState : PlayerBaseState {
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
 
 
@@ -21,6 +20,11 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
+
+        Vector3 movement = CalculateMovement();
+        Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
+
+        FaceTarget();
     }
 
     public override void Exit() {
@@ -31,6 +35,15 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.Targeter.Cancel();
 
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+    }
+
+    private Vector3 CalculateMovement() {
+        Vector3 movement = new();
+
+        movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+
+        return movement;
     }
 
 }
