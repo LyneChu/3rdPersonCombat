@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-	public List<Target> targets = new();
+    private List<Target> targets = new();
+
+    public Target CurrentTarget { get; private set; }
 
     private void OnTriggerEnter(Collider other) {
         if (!other.TryGetComponent<Target>(out Target target)) return;
@@ -16,5 +18,20 @@ public class Targeter : MonoBehaviour
         if (!other.TryGetComponent<Target>(out Target target)) return;
 
         targets.Remove(target);
+    }
+
+    public bool SelectTarget()
+    {
+        if (targets.Count == 0)
+            return false;
+
+        CurrentTarget = targets[0];
+
+        return true;
+    }
+
+    public void Cancel()
+    {
+        CurrentTarget = null;
     }
 }

@@ -21,11 +21,11 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero) {
-            stateMachine.animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
             return;
         }
 
-        stateMachine.animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
         FaceMovementDirection(movement, deltaTime);
     }
 
@@ -34,6 +34,9 @@ public class PlayerFreeLookState : PlayerBaseState
     }
 
     private void OnTarget() {
+        if (!stateMachine.Targeter.SelectTarget())
+            return;
+
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 

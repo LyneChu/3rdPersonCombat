@@ -177,7 +177,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3249901267974162575}
-  m_LocalRotation: {x: 0.033495553, y: -0.00002853519, z: 0.0000009563386, w: 0.9994389}
+  m_LocalRotation: {x: 0.03349555, y: -0.000028542703, z: 0.0000009565903, w: 0.9994389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -263,7 +263,7 @@ Transform:
   - {fileID: 3249901269763355250}
   - {fileID: 3067882088657077878}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3249901268438211016
 GameObject:
@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 6340878663938657112}
   - component: {fileID: 971007588732240268}
   - component: {fileID: 3386579607096165553}
+  - component: {fileID: 382562866}
   m_Layer: 0
   m_Name: Targeter
   m_TagString: Untagged
@@ -1051,6 +1052,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &382562866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064940819871281875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a93fac3307b4867bc15eeea93af2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2830321162943513616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1121,6 +1134,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6872025173712605080, guid: d4de562c253cf464182c53776e8bd8a0,
         type: 3}
+      propertyPath: <Animator>k__BackingField
+      value: 
+      objectReference: {fileID: 104144851795053608}
+    - target: {fileID: 6872025173712605080, guid: d4de562c253cf464182c53776e8bd8a0,
+        type: 3}
+      propertyPath: <Targeter>k__BackingField
+      value: 
+      objectReference: {fileID: 382562866}
+    - target: {fileID: 6872025173712605080, guid: d4de562c253cf464182c53776e8bd8a0,
+        type: 3}
       propertyPath: <RotationSpeed>k__BackingField
       value: 10
       objectReference: {fileID: 0}
@@ -1136,6 +1159,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6340878663938657112}
   m_SourcePrefab: {fileID: 100100000, guid: d4de562c253cf464182c53776e8bd8a0, type: 3}
+--- !u!95 &104144851795053608 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2753578622343891000, guid: d4de562c253cf464182c53776e8bd8a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2830321162943513616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3067882088657077878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 996452870787465830, guid: d4de562c253cf464182c53776e8bd8a0,
