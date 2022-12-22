@@ -58,7 +58,7 @@ public class Targeter : MonoBehaviour
         }
 
         if (closestTarget == null) return false;
-
+         
         CurrentTarget = closestTarget;
         cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
 
