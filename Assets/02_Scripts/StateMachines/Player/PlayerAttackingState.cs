@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
+    private bool isAlreadyAppliedForce;
 
     private Attack attack;
 
@@ -24,15 +25,22 @@ public class PlayerAttackingState : PlayerBaseState
 
         FaceTarget();
 
-
         float normalizedTime = GetNormalizedTime();
 
-        if (normalizedTime > previousFrameTime && normalizedTime < 1f) {
+        //if (normalizedTime >= previousFrameTime && normalizedTime < 1f) {
+        if (normalizedTime < 1f) {
+            if (normalizedTime >= attack.ForceTime)
+                TryApplyForce();
+
             if (stateMachine.InputReader.IsAttacking)
                 TryComboAttack(normalizedTime);
         }
-        else
-            // go back to locomotion
+        else {
+            if (stateMachine.Targeter.CurrentTarget != null)
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            else
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        }
 
         previousFrameTime = normalizedTime;
     }
@@ -41,13 +49,21 @@ public class PlayerAttackingState : PlayerBaseState
 
     }
 
+
     private void TryComboAttack(float normalizedTime) {
         if (attack.ComboStateIndex == -1) return;
 
         if (normalizedTime < attack.ComboAttackTime) return;
 
         stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
+    }
 
+    private void TryApplyForce() {
+        if (isAlreadyAppliedForce) return;
+
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+
+        isAlreadyAppliedForce = true;
     }
 
     private float GetNormalizedTime() {
