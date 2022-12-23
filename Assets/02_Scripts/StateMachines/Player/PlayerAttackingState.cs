@@ -42,7 +42,7 @@ public class PlayerAttackingState : PlayerBaseState
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
 
-        previousFrameTime = normalizedTime;
+        //previousFrameTime = normalizedTime;
     }
 
     public override void Exit() {
