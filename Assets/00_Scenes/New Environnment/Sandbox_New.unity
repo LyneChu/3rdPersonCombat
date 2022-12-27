@@ -1295,12 +1295,12 @@ PrefabInstance:
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000028534032
+      value: -0.00002853833
       objectReference: {fileID: 0}
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000009562984
+      value: 0.0000009564425
       objectReference: {fileID: 0}
     - target: {fileID: 3249901268100572590, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
@@ -2944,6 +2944,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7501323085602516064, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d10d5c53377f14f8cbda4d3a6fd234dc, type: 2}
     - target: {fileID: 8220889889999240089, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
         type: 3}
       propertyPath: m_RootOrder
