@@ -124,7 +124,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 68a4e84fb64054f1281e27f8a567c894, type: 2}
 --- !u!1001 &17282916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1295,12 +1295,12 @@ PrefabInstance:
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00002853833
+      value: -0.000028534032
       objectReference: {fileID: 0}
     - target: {fileID: 3249901267974162609, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000009564425
+      value: 0.0000009562984
       objectReference: {fileID: 0}
     - target: {fileID: 3249901268100572590, guid: dbed46575ae794fc79b5bce407b98a68,
         type: 3}
@@ -2929,6 +2929,16 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2664940426971166999, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
+        type: 3}
+      propertyPath: <Agent>k__BackingField
+      value: 
+      objectReference: {fileID: 6173333124398617330}
+    - target: {fileID: 2664940426971166999, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
+        type: 3}
+      propertyPath: <MovementSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3418922989226194540, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
         type: 3}
       propertyPath: m_Name
@@ -2992,3 +3002,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3, type: 3}
+--- !u!195 &6173333124398617330 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 5132235365380378669, guid: 6c07dc92c1dcf4f04addc0e2c27aaef3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6173333124398617329}
+  m_PrefabAsset: {fileID: 0}
