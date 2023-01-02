@@ -9,9 +9,12 @@ public class WeaponHandler : MonoBehaviour
 
     public void EnableWeapon() {
         weaponLogic.SetActive(true);
+        
+        
     }
 
     public void DisableWeapon() {
         weaponLogic.SetActive(false);
     }
+
 }

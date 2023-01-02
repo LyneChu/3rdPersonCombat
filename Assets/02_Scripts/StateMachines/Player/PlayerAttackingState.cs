@@ -24,7 +24,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         FaceTarget();
 
-        float normalizedTime = GetNormalizedTime();
+        float normalizedTime = GetNormalizedTime(stateMachine.Animator);
 
         //if (normalizedTime >= previousFrameTime && normalizedTime < 1f) {
         if (normalizedTime < 1f) {
@@ -65,16 +65,5 @@ public class PlayerAttackingState : PlayerBaseState
         isAlreadyAppliedForce = true;
     }
 
-    private float GetNormalizedTime() {
-        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0);
 
-        if (stateMachine.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
-            return nextInfo.normalizedTime;
-        else if (!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
-            return currentInfo.normalizedTime;
-        else
-            return 0;
-
-    }
 }
