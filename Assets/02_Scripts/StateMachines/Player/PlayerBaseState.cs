@@ -6,8 +6,7 @@ public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
 
-    public PlayerBaseState(PlayerStateMachine stateMachine)
-    {
+    public PlayerBaseState(PlayerStateMachine stateMachine) {
         this.stateMachine = stateMachine;
     }
 
@@ -27,5 +26,12 @@ public abstract class PlayerBaseState : State
         lookPos.y = 0f;
 
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
+
+    protected void ReturnToLocomotion() {
+        if (stateMachine.Targeter.CurrentTarget != null)
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        else
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 }
