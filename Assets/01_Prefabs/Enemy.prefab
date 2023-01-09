@@ -1489,6 +1489,7 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 1157634543357402930}
   <Agent>k__BackingField: {fileID: 5132235365380378669}
   <Weapon>k__BackingField: {fileID: 1166545349475407266}
+  <Health>k__BackingField: {fileID: 154338673493988847}
   <MovementSpeed>k__BackingField: 3
   <PlayerChasingRange>k__BackingField: 10
   <AttackRange>k__BackingField: 1.5
