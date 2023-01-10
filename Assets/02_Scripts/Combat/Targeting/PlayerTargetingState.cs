@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerTargetingState : PlayerBaseState {
+public class PlayerTargetingState : PlayerBaseState
+{
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward");
     private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight");
@@ -26,7 +27,12 @@ public class PlayerTargetingState : PlayerBaseState {
             return;
         }
 
-        if (stateMachine.Targeter.CurrentTarget == null) { 
+        if (stateMachine.InputReader.IsBlocking) {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+            return;
+        }
+
+        if (stateMachine.Targeter.CurrentTarget == null) {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
