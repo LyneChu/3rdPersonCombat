@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
 {
+    private Vector2 dodgingDirectionInput;
+    private float remainingDodgeDuration;
+
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward");
     private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight");
@@ -17,6 +20,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter() {
         stateMachine.InputReader.CancelEvent += OnCancel;
+        stateMachine.InputReader.DodgeEvent += OnDodge;
 
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
     }
@@ -37,7 +41,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        Vector3 movement = CalculateMovement();
+        Vector3 movement = CalculateMovement(deltaTime);
         Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
 
         UpdateAnimator(deltaTime);
@@ -48,6 +52,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit() {
         stateMachine.InputReader.CancelEvent -= OnCancel;
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
     }
 
     private void OnCancel() {
@@ -56,11 +61,30 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 
-    private Vector3 CalculateMovement() {
+    private void OnDodge() {
+        if (Time.time - stateMachine.PreviousDodgeTime < stateMachine.DodgeCooldown)
+            return;
+
+        stateMachine.SetDodgeTime(Time.time);
+        dodgingDirectionInput = stateMachine.InputReader.MovementValue;
+        remainingDodgeDuration = stateMachine.DodgeDuration;
+
+    }
+
+
+    private Vector3 CalculateMovement(float deltaTime) {
         Vector3 movement = new();
 
-        movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
-        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        if (remainingDodgeDuration > 0f) {
+            movement += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.DodgeLength / remainingDodgeDuration;
+            movement += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.DodgeLength / remainingDodgeDuration;
+
+            remainingDodgeDuration = Mathf.Max(remainingDodgeDuration - deltaTime, 0f);
+        }
+        else {
+            movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+            movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        }
 
         return movement;
     }

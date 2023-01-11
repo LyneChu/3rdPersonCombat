@@ -14,10 +14,15 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public float FreeLookMovementSpeed { get; private set; }
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }
-	[field: SerializeField] public float RotationSpeed { get; private set; }
+    [field: SerializeField] public float RotationSpeed { get; private set; }
+    [field: SerializeField] public float DodgeDuration { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }
+    [field: SerializeField] public float DodgeCooldown { get; private set; }
+
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
+    public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
 
     private void Start() {
         MainCameraTransform = Camera.main.transform;
@@ -31,7 +36,7 @@ public class PlayerStateMachine : StateMachine
     }
 
     private void OnDisable() {
-        Health.OnTakeDamage -= HandleTakeDamage; 
+        Health.OnTakeDamage -= HandleTakeDamage;
         Health.OnDie -= HandleDie;
 
     }
@@ -44,4 +49,7 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerDeadState(this));
     }
 
+    public void SetDodgeTime(float dodgeTime) {
+        PreviousDodgeTime = dodgeTime;
+    }
 }
