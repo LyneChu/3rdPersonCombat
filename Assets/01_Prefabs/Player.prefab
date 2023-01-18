@@ -294,6 +294,7 @@ Transform:
   - {fileID: 2248673399247129747}
   - {fileID: 6677824693673489642}
   - {fileID: 6340878663938657112}
+  - {fileID: 8447111955780592688}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -317,6 +318,7 @@ MonoBehaviour:
   <Weapon>k__BackingField: {fileID: 8331279038120805382}
   <Health>k__BackingField: {fileID: 1134934546297955158}
   <Ragdoll>k__BackingField: {fileID: 602435541539517652}
+  <LedgeDetector>k__BackingField: {fileID: 0}
   <FreeLookMovementSpeed>k__BackingField: 6
   <TargetingMovementSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 10
@@ -1756,6 +1758,81 @@ Transform:
   m_Father: {fileID: 5792404489301094478}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -5.8622355, y: -1.1398208, z: -1.1821074}
+--- !u!1 &3917247190327125252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8447111955780592688}
+  - component: {fileID: 9120117121367310496}
+  - component: {fileID: 3876569808053818718}
+  - component: {fileID: 7186114833372455433}
+  m_Layer: 8
+  m_Name: LedgeDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8447111955780592688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917247190327125252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.217, z: -0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 996452870787465830}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9120117121367310496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917247190327125252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.54132414, y: 0.057621002, z: 0.065870285}
+  m_Center: {x: -0.032565355, y: 0.02880001, z: -0.016148567}
+--- !u!54 &3876569808053818718
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917247190327125252}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7186114833372455433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917247190327125252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c090fd70f264c6eb20c3c55b975c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4033598427762677536
 GameObject:
   m_ObjectHideFlags: 0
