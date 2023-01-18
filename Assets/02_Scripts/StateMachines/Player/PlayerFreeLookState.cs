@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
+    private bool shouldFade;
+
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
 
@@ -12,13 +14,23 @@ public class PlayerFreeLookState : PlayerBaseState
     private const float AnimatorDampTime = 0.1f;
 
 
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine) {
+        this.shouldFade = shouldFade;
+    }
 
     public override void Enter() {
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
 
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f);
+
+         if (shouldFade) {
+            stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+        }
+        else {
+            stateMachine.Animator.Play(FreeLookBlendTreeHash);
+        }
+
     }
 
     public override void Tick(float deltaTime) {
@@ -39,7 +51,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
         FaceMovementDirection(movement, deltaTime);
     }
-     
+
     public override void Exit() {
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.JumpEvent -= OnJump;
@@ -56,8 +68,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
-    private Vector3 CalculateMovement()
-    {
+    private Vector3 CalculateMovement() {
         Vector3 forward = stateMachine.MainCameraTransform.forward;
         Vector3 right = stateMachine.MainCameraTransform.right;
 
