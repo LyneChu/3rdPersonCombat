@@ -21,7 +21,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 20176b81bcc3448639491107acbde806, type: 2}
-  m_Tag: 
+  m_Tag: Climbing
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

@@ -26,6 +26,9 @@ public class PlayerStateMachine : StateMachine
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
 
     private void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         MainCameraTransform = Camera.main.transform;
 
         SwitchState(new PlayerFreeLookState(this));
